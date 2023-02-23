@@ -19,8 +19,8 @@ import { useState } from "react";
 import useAuth from "./hooks/useAuth";
 import LoginForm from "./components/Sleeper/LoginForm";
 
-const BASE_URL = `https://api.sleeper.app/v1/`;
-const DB_URL = `http://127.0.0.1:8000/api/sleeper/`;
+export const BASE_URL = `https://api.sleeper.app/v1/`;
+export const DB_URL = `http://127.0.0.1:8000/api/sleeper/`;
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -31,7 +31,7 @@ function App() {
   const { user_id } = useParams();
 
   // Authentication
-  
+
   async function loginUser(user) {
     try {
       await axios.post(`${DB_URL}/sleeper_user/login`, user, {

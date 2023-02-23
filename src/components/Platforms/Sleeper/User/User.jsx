@@ -1,9 +1,9 @@
-// Get user & other user data via Sleeper get user(with username) api call--With incorporate with login
+// Get user with username api call --> Want this to return a list of leagues that the user belongs to 
 import React, { useState, useEffect } from 'react';
 
 
 
-const GetUser = () => {
+const User = () => {
   
   const [currentUser,setCurrentUser] = useState(null)
    
@@ -23,4 +23,4 @@ const GetUser = () => {
    );
 }
  
-export default GetUser;
+export default User;
