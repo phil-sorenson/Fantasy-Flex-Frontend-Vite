@@ -31,7 +31,7 @@ function App() {
   const { user_id } = useParams();
 
   // Authentication
-
+  
   async function loginUser(user) {
     try {
       await axios.post(`${DB_URL}/sleeper_user/login`, user, {
