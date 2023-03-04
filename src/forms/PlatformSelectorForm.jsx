@@ -1,0 +1,1 @@
+// Initial form (card,modal, or whatever) seen by user before clicking on a specific platform
