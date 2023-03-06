@@ -3,7 +3,8 @@ import { Routes, Route, useParams } from "react-router-dom";
 import "./App.css";
 import { KEY } from "./localKey";
 import { APP_ID } from "./localKey";
-
+// import "../scss/styles.scss"; 
+// import * as bootstrap from 'bootstrap'
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/ReactLoginPage/LoginPage";
@@ -17,18 +18,17 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import { useState } from "react";
 import useAuth from "./hooks/useAuth";
-// import LoginForm from "./components/Sleeper/LoginForm";
 
 // export const BASE_URL = `https://api.sleeper.app/v1/`;
 // export const DB_URL = `http://127.0.0.1:8000/api/sleeper/`;
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [sleeperUser, setSleeperUser] = useStet(null);
-  const [league, setLeague] = useState(null);
-  const [user, token] = useAuth();
-  const { user_id } = useParams();
+  // const [currentUser, setCurrentUser] = useState(null);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [sleeperUser, setSleeperUser] = useStet(null);
+  // const [league, setLeague] = useState(null);
+  // const [user, token] = useAuth();
+  // const { user_id } = useParams();
 
   // Authentication
 

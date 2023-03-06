@@ -68,7 +68,7 @@ const RegisterPage = () => {
           NOTE: Make this an uncommon password with characters, numbers, and
           special characters!
         </p>
-        <button>Register!</button>
+        <button type="submit">Register!</button>
       </form>
     </div>
   );

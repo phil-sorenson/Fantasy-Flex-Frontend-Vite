@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // import useAuth from '../../../../hooks/useAuth';
 import axios from 'axios';
-import GetUserForm from '../../../../forms/GetUserForm';
+import GetUserForm from './GetUserForm';
 
 const SleeperUser = ({ username }) => {
   // useAuth = {user, token}
@@ -10,7 +10,7 @@ const SleeperUser = ({ username }) => {
    
 
   useEffect(() => {
-    const getUser = async () => {
+    const user  = async () => {
       try {
         
       } catch (error) {

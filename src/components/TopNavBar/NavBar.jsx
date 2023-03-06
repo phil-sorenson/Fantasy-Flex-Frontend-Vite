@@ -13,7 +13,7 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>Fantasy-Flex 🏈 Dynasty League Assistant</b>
+            <b>Fantasy🏈Flex: League Tracker</b>
           </Link>
         </li>
         <li>
