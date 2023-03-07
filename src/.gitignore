@@ -130,5 +130,5 @@ dist
 .pnp.*
 
 # API Keys & Tokens
-localKey.js
+localKey.jsx
 tokens.js

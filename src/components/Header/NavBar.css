@@ -4,9 +4,6 @@ ul {
   list-style-type: none;
 }
 
-li {
-  font-size: 1.25rem;
-}
 
 .navBar {
   background: steelblue;
@@ -31,5 +28,5 @@ li {
 
 .brand {
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.25rem;
 }

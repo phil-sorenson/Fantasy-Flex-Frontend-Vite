@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const SideNavBar = ({ jwt }) => {
+const SideBar = ({ jwt }) => {
   
   
   
@@ -13,4 +13,4 @@ const SideNavBar = ({ jwt }) => {
    );
 }
  
-export default SideNavBar;
+export default SideBar;

@@ -1,11 +1,11 @@
 import React, { createContext, useState } from "react";
 
-export const UserContext = createContext();
+export const UserContext = createContext(null);
 
-export const UserProvider = ({ children }) => {
+export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const userId = JSON.parse(localStorage.getItem("user_id"));
-  const [userID, setUserID] = useState(userId);
+  // const userId = JSON.parse(localStorage.getItem("user_id"));
+  // const [userID, setUserID] = useState(userId);
 
   const setUserInfo = (userInfo) => {
     setUser(userInfo);
@@ -17,3 +17,5 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+export default UserContextProvider;

@@ -3,19 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router } from "react-router-dom";
-// import "./index.css"
-
-// 'root' element configuration -- standard React
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Router>
-//       <AuthProvider>
-//         <App />
-//       </AuthProvider>
-//     </Router>
-//   </React.StrictMode>,
-//   document.getElementById("root")
-// );
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 // 'root' element configuration -- vite 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -25,6 +13,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <App />
       </AuthProvider>
     </Router>
-    
+
   </React.StrictMode>,
 )
