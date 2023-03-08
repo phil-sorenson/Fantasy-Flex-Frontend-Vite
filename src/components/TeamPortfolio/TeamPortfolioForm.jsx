@@ -1,1 +1,0 @@
-// Id like for there to be a list of teams in a large card or  on dashboard/Homepage upon logging in (E.G DynastyGM)

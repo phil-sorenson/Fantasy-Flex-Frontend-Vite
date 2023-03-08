@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import "./HomePage.css"
+import AddLeague from '../../components/AddLeague';
 
 
 const HomePage = () => {
@@ -18,10 +19,15 @@ const HomePage = () => {
 
   return (
     <div>
-        <h2>Welcome to Fantasy🏈Flex {user.username}</h2>
-        <h5>Step 1. Import your Fantasy Football leagues</h5>
-        <h5>Step 2. Track ALL your teams in one place for free!</h5>
-        <h5>Step 3. Flex on your competition and win some hardware!</h5>
+      <div>
+          <h2>Welcome to Fantasy🏈Flex {user.username}</h2>
+          <h5>Step 1. Import your Fantasy Football leagues</h5>
+          <h5>Step 2. Track ALL your teams in one place for free!</h5>
+          <h5>Step 3. Flex on your competition and win some hardware!</h5>
+      </div>
+      <div>
+        {token? <AddLeague/> : <p>Must be logged-in to Add a League</p>}
+      </div>
     </div>
   );
 };
