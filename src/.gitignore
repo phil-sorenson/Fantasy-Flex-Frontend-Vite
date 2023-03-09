@@ -132,3 +132,6 @@ dist
 # API Keys & Tokens
 localKey.jsx
 tokens.js
+
+# Reference Pages
+HTMLCodeReference.md

@@ -4,7 +4,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const PlatformSelection = () => {
+const SelectPlatform = () => {
   const navigate = useNavigate();
 
   const handlePlatformSelection = (platform) => {
@@ -17,8 +17,11 @@ const PlatformSelection = () => {
       <button onClick={() => handlePlatformSelection('sleeper')}>
         Sleeper
       </button>
+      {/* <button onClick={()=> handlePlatformSelection('MFL')}>
+        MFL
+      </button> */}
     </div>
   );
 };
 
-export default PlatformSelection;
+export default SelectPlatform;
