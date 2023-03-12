@@ -24,6 +24,7 @@ import SideBar from './components/SideBarNav';
 import PrivateRoute from "./utils/PrivateRoute";
 import { useState } from "react";
 import useAuth from "./hooks/useAuth";
+import SyncSleeper from "./pages/SyncPlatformPage/Sleeper/SyncSleeper";
 
 // export const BASE_URL = `https://api.sleeper.app/v1/`;
 // export const DB_URL = `http://127.0.0.1:8000/api/sleeper/`;
@@ -46,6 +47,10 @@ function App() {
           />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/login' element={<LoginPage />} />
+          <Route path='select-platform' element={<SelectPlatform/>}/>
+          <Route path='sync-platform' element={<SyncSleeper/>}/>
+          <Route path='select-platform' element={<SelectPlatform/>}/>
+
         </Routes>
         <Footer />
       </div>

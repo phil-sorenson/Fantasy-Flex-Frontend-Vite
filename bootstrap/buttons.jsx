@@ -1,4 +1,4 @@
-//? Loading Button for when SyncingLeagues
+//! Loading Button for when SyncingLeagues
 
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';

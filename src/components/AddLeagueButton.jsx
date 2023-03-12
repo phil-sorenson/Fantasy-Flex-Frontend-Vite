@@ -3,14 +3,15 @@ import React, { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { user, token } from "../hooks/useAuth"
+import { Link } from 'react-router-dom';
 
-const AddLeague = () => {
+const AddLeagueButton = () => {
   // const { userData } = useContext(UserContext);
   const navigate = useNavigate();
   const {user, token } = useAuth()
 
   const handleAddLeague = () => {
-    history.push('/platform-selection');
+    navigate('/platform-selection');
   };
 
   return (
@@ -24,4 +25,4 @@ const AddLeague = () => {
   );
 };
 
-export default AddLeague;
+export default AddLeagueButton;

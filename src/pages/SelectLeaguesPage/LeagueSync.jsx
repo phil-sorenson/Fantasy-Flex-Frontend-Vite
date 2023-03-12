@@ -45,7 +45,7 @@
 //   export default LeagueSync;
 
 
- 
+//  =========================================================
  
   
   // const handleLeagueChange = (e) => {
@@ -85,6 +85,7 @@
               
 // export default SelectLeagues;
 
+// ======================
 
 // // LeagueSelection.js
 
@@ -108,5 +109,49 @@
 
 // export default LeagueSelection;
 
+// ==========================
 
+// import React, { useState, useContext } from 'react';
+// import { UserContext } from '../context/UserContext';
+
+// const AllLeagues = () => {
+//   const { userData, setUserData } = useContext(UserContext);
+//   const [selectedLeagueIds, setSelectedLeagueIds] = useState([]);
+//   // const [checked, setChecked] = useState([])
+
+//   const handleLeagueSelection = (leagueId) => {
+//     if (selectedLeagueIds.includes(leagueId)) {
+//       setSelectedLeagueIds(selectedLeagueIds.filter((id) => id !== leagueId));
+//     } else {
+//       setSelectedLeagueIds([...selectedLeagueIds, leagueId]);
+//     }
+//   };
+
+//   const handleImportLeagues = () => {
+//     setUserData((prevUserData) => ({
+//       ...prevUserData,
+//         selectedLeagues: userData.leagues.filter((league) =>
+//         selectedLeagueIds.includes(league.league_id)
+//       ),
+//     }));
+//   };
+
+//   return (
+//     <div>
+//       <h2>Pick the Leagues to Connect</h2>
+//       {userData.leagues.map((league) => (
+//         <div key={league.league_id}>
+//           <input
+//             type='checkbox'
+//             onChange={() => handleLeagueSelection(league.league_id)}
+//           />
+//           {league.name}
+//         </div>
+//       ))}
+//       <button onClick={handleImportLeagues}>Import Leagues</button>
+//     </div>
+//   );
+// };
+
+// export default AllLeagues;
 
