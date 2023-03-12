@@ -1,16 +1,16 @@
 // 
-
 import React, { createContext, useState } from 'react';
 
-export const DataContext = createContext();
+export const  DataContext = createContext();
 
-function DataContextProvider(props) {
+export const DataContextProvider = ({children}) => {
+  
   const [userData, setUserData] = useState(null);
   const [leagueData, setLeagueData] = useState(null);
 
   return (
     <DataContext.Provider value={{ userData, setUserData, leagueData, setLeagueData }}>
-      {props.children}
+      {children}
     </DataContext.Provider>
   );
 }

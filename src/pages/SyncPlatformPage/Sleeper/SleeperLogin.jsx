@@ -4,7 +4,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { UserContext } from '../../../context/UserContext';
 import { DataContext } from '../../../context/SleeperDataContext';
-import { useAuth } from '../../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const SleeperLogin = () => {
   const {user, token} = useAuth()
@@ -19,7 +21,7 @@ const SleeperLogin = () => {
   };
 
   
-  const handleLeagueSync = async () => {
+  const handleLogin = async () => {
       try {
         const response = await axios.get(
           `https://api.sleeper.app/v1/user/${username}`, {
@@ -36,65 +38,48 @@ const SleeperLogin = () => {
     }
   };
 
+
   return (
-    <div>
-      <h2>Keep track of your Sleeper Leagues!</h2>
-      <h4>Enter Sleeper Username to Start Sync</h4>
-      <form onSubmit={handleLeagueSync}>
-        <label>
-          Sleeper Username:
-          <input placeholder='Username' type="text" value={username} onChange={handleUsernameChange} />
-        </label>
-        <button type="submit">Start League Sync</button>
-        <text>Email Address will NOT work -- must be Username</text>
+    
+    <Form onSubmit={handleLogin}>
+      <h2>Keep Track of your Sleeper Leagues!</h2>
+      <h4>Enter your Sleeper Username to start Sync</h4>
+      <Form.Group className="mb-3" controlId="formBasicUsername">
+        <Form.Label>Sleeper Username</Form.Label>
+        <Form.Control size='sm' type="text" value={username} onChange={handleUsernameChange} placeholder="Sleeper Username" />
+        <Form.Text className="text-muted">
+          Must be Username -- Email will NOT work! 
+        </Form.Text>
         {error && <p>error</p>}
-      </form>
-    </div>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Check me out" />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
   );
+
+
+
 }
 
 export default SleeperLogin;
 
 
-// import React, { useState, useEffect, useContext } from 'react';
-// import axios from 'axios';
-// import { useNavigate, useLocation, useAuth } from 'react-router-dom';
-// import { DataContext } from '../../../context/SleeperDataContext';
-
-// const SyncSleeper = (props) => {
-  
-//   const [username, setUsername] = useState('');
-//   const { setUserData } = useContext(DataContext);
-//   const navigate = useNavigate();
-//   const location = useLocation();
-  
-//   async function handleSync () {
-//     try {
-//       const { data } = await axios.get(
-//         `https://api.sleeper.app/v1/user/${username}`
-//         );
-//       setUserData(data);
-//       navigate('/select-league')
-//         console.log('data', data);
-//     } catch (error) {
-//       console.log(error.message)
-//     }
-//   }
-
-//   const platform = new URLSearchParams(location.search).get('platform');
-
-//   return ( 
-//     <div>
-//       <h2>{platform.toUpperCase()} Sync</h2>
-//       <input
-//       type='text'
-//       placeholder='Username'
-//       value={username}
-//       onChange={(e) => setUsername(e.target.value)}
-//       />
-//       <button onClick={handleSync}>Start League Sync</button>
-//     </div>
-//    );
-// };
- 
-// export default SyncSleeper;
+  // return (
+  //   <div>
+  //     <h2>Keep track of your Sleeper Leagues!</h2>
+  //     <h4>Enter Sleeper Username to Start Sync</h4>
+  //     <form onSubmit={handleLogin}>
+  //       <label>
+  //         Sleeper Username:
+  //         <input placeholder='Username' type="text" value={username} onChange={handleUsernameChange} />
+  //       </label>
+  //       <button type="submit">Start League Sync</button>
+  //       <text>Email Address will NOT work -- must be Username</text>
+  //       {error && <p>error</p>}
+  //     </form>
+  //   </div>
+  // );

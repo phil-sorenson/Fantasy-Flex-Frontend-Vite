@@ -1,28 +1,26 @@
-// Navigates to the SelectPlatfornmPage onClick
-import React, { useContext } from 'react';
-import { UserContext } from '../context/UserContext';
-import { useNavigate } from 'react-router-dom';
-import { user, token } from "../hooks/useAuth"
-import { Link } from 'react-router-dom';
+// Navigates to the SelectPlatformPage onClick
 
-const AddLeagueButton = () => {
-  // const { userData } = useContext(UserContext);
-  const navigate = useNavigate();
-  const {user, token } = useAuth()
+// import React, { useContext } from 'react';
+// // import { UserContext } from '../context/UserContext';
+// import { useNavigate } from 'react-router-dom';
+// import useAuth from '../hooks/useAuth';
+// // import { Link } from 'react-router-dom';
 
-  const handleAddLeague = () => {
-    navigate('/platform-selection');
-  };
+// const AddLeagueButton = () => {
+//   // const { userData } = useContext(UserContext);
+//   const navigate = useNavigate();
+//   const {user, token } = useAuth()
+//   console.log('token', token)
 
-  return (
-    <div>
-      {token ? (
-        <button onClick={handleAddLeague}>Add A League</button>
-      ) : (
-        <p>Please log in to add a league.</p>
-      )}
-    </div>
-  );
-};
+//   const handleAddLeague = () => {
+//     navigate('/platform-selection');
+//   };
 
-export default AddLeagueButton;
+//   return (
+//     <div>
+//         <button onClick={handleAddLeague}>Add A League</button>
+//     </div>
+//   );
+// };
+
+// export default AddLeagueButton;
