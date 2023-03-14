@@ -1,5 +1,5 @@
 // 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 const DataContext = createContext();
 export default DataContext
@@ -8,6 +8,25 @@ export const DataContextProvider = ({children}) => {
   
   const [userData, setUserData] = useState(null);
   const [leagueData, setLeagueData] = useState(null);
+  useEffect(()=> {
+    const storedUserData=JSON.parse(localStorage.getItem('userData'));
+    const storedLeagueData=JSON.parse(localStorage.getItem('leagueData'));
+
+    if (storedUserData) {
+      setUserData(storedUserData)
+    }
+    if (storedLeagueData) {
+      setLeagueData(storedLeagueData)
+    }
+  },[])
+
+  useEffect(()=> {
+    localStorage.setItem('userData', JSON.stringify(userData))
+  },[userData])
+  
+  useEffect(()=> {
+    localStorage.setItem('leagueData', JSON.stringify(leagueData))
+  },[leagueData])
 
   return (
     <DataContext.Provider value={{ userData, setUserData, leagueData, setLeagueData }}>

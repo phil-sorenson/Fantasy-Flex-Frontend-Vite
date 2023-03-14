@@ -12,8 +12,8 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import HomePage from "./pages/HomePage/HomePage";
 import SelectPlatform from "./pages/PlatformSelectionPage/SelectPlatform";
 import SleeperLogin from './pages/SyncPlatformPage/Sleeper/SleeperLogin'
-// import SelectLeagues from "./pages/SelectLeaguesPage/SelectLeagues";
-import UpdatedSelectLeagues from "./pages/SelectLeaguesPage/UpdatedSelectLeagues";
+import SelectLeagues from "./pages/SelectLeaguesPage/SelectLeagues";
+
 
 
 // Component Imports
@@ -51,7 +51,7 @@ function App() {
               <Route path='/login' element={<LoginPage />} />
               <Route path='/platform-select' element={<SelectPlatform/>}/>
               <Route path='/sleeper-login' element={<SleeperLogin/>}/>
-              <Route path='/select-league' element={<UpdatedSelectLeagues/>}/>
+              <Route path='/select-league' element={<SelectLeagues/>}/>
 
             </Routes>
           
