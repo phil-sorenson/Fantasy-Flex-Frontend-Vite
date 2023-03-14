@@ -3,13 +3,13 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { UserContext } from '../../../context/UserContext';
-import { DataContext } from '../../../context/SleeperDataContext';
+import DataContext  from '../../../context/SleeperDataContext';
 import useAuth from '../../../hooks/useAuth';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const SleeperLogin = () => {
-  const {user, token} = useAuth()
+  const {token} = useAuth()
   const [username, setUsername] = useState('');
   const {setUserData} = useContext(DataContext)
   const [error, setError] = useState('')
@@ -17,12 +17,16 @@ const SleeperLogin = () => {
 
 
   const handleUsernameChange = (event) => {
+    // event.preventDefault()
     setUsername(event.target.value);
+    // setUserData(event.target.value);
+    console.log('username', username)
   };
 
   
-  const handleLogin = async () => {
-      try {
+  const handleLogin = async (event) => {
+    event.preventDefault()
+    try {
         const response = await axios.get(
           `https://api.sleeper.app/v1/user/${username}`, {
             headers: {
@@ -30,6 +34,7 @@ const SleeperLogin = () => {
           });
       const sleeperUser = response.data;
       setUserData(sleeperUser);
+      console.log('submitted username', username)
       console.log('userData', sleeperUser)
       navigate('/select-league');
     } catch (error) {
@@ -42,6 +47,7 @@ const SleeperLogin = () => {
   return (
     
     <Form onSubmit={handleLogin}>
+        {/* {console.log()} */}
       <h2>Keep Track of your Sleeper Leagues!</h2>
       <h4>Enter your Sleeper Username to start Sync</h4>
       <Form.Group className="mb-3" controlId="formBasicUsername">
@@ -52,9 +58,7 @@ const SleeperLogin = () => {
         </Form.Text>
         {error && <p>error</p>}
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+     
       <Button variant="primary" type="submit">
         Submit
       </Button>

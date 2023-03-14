@@ -3,19 +3,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { DataContext } from '../../context/SleeperDataContext';
-import useAuth from '../../hooks/useAuth';
+import DataContext  from '../../context/SleeperDataContext';
+// import useAuth from '../../hooks/useAuth';
 
 function SelectLeagues({ onLeaguesImported }) {
   
-  const {userData} = useContext(DataContext);
-  const {leagueData, setLeagueData} = useContext(DataContext);
+  const {userData ,leagueData, setLeagueData} = useContext(DataContext);
   const [leagues, setLeagues] = useState([]);
   const [selectedLeagues, setSelectedLeagues] = useState([]);
   const navigate = useNavigate();
-  const {user, token} = useAuth();
-  
-
+  // const {token} = useAuth();
 
   useEffect(() => {
     const fetchLeagues = async () => {
@@ -23,64 +20,35 @@ function SelectLeagues({ onLeaguesImported }) {
       const response = await axios.get(
         `https://api.sleeper.app/v1/user/${userId}/leagues/nfl/2023`
       );
-      const leagues = response.data.map((league) => ({
-        ...league,
-          selected: false,
-      }));
+      const leagues = response.data
       setLeagueData(leagues);
       setLeagues(leagues);
       console.log('sleeperLeagues', leagues)
     };
 
     fetchLeagues();
-  }, []);
+  }, [userId]);
+
+ 
 
   const handleCheckboxChange = (event, leagueId) => {
-    const updatedLeagues = leagues.map((league) => {
+    const checkedLeagues = leagues.map((league) => {
       if (league.league_id === leagueId) {
-        return { ...league, selected: event.target.checked };
+        return { ...league, selected: event.target.checked };  
       } else {
         return league;
       }
     });
-    setLeagues(updatedLeagues);
-    console.log('updatedLeagues', updatedLeagues)
+    setLeagueData(checkedLeagues)
+    setLeagues(checkedLeagues);
   }
 
-  // const fetchSelectedTeams = async () => {
-  //   const response = await axios.get(`https://api.sleeper.app/v1/league/${league.league_id}`)
-  // }
-
-  const handleImportClick = async () => {
-    const selectedLeagues = leagues.filter((league) => league.selected);
-    const importedLeagues = await Promise.all(selectedLeagues.map(async (league) => {
-      const usersResponse = axios.get(`https://api.sleeper.app/v1/league/${league.league_id}/users`);
-      const leagueUsers = usersResponse.data;
-      const rosterResponse = await axios.get(`https://api.sleeper.app/v1/league/${league.league_id}/rosters`)
-      const leagueRosters = rosterResponse.data
-      const user = leagueUsers.find((user) => 
-        user.user_id === userData.user_id);
-      const userTeams = leagueRosters.filter((roster)=> 
-        roster.owner_id === userData.user_id);
-      
-      const userTeamObject = userTeams.map(() => {
-        return {
-          avatar: userData.avatar,
-          team_name: userData.username,
-          league_name: league.name,
-          scoring_setting: league.scoring_settings.rec
-          //* Figure out how to identify what each int means (1.0 = PPR, 0.5 = Half-PPR)
-        };
-      });
-      
-      return userTeamObject;
+  
   
      
     
-    }));
-    onLeaguesImported(importedLeagues);
-    navigate('/');
-  }
+
+  
 
   return (
     <div>
@@ -99,4 +67,74 @@ function SelectLeagues({ onLeaguesImported }) {
 };
       
   export default SelectLeagues; 
+
+
+   //* ======================================== **//
+
+// import React, { useState, useEffect } from 'react';
+// import DataContext from '../../context/SleeperDataContext';
+// import axios from 'axios';
+// import { useNavigate } from 'react-router-dom';
+// import Form from 'react-bootstrap/Form';
+// import Button from 'react-bootstrap/Button';
+
+export const ImportLeagues = ({onImportLeagues}) => {
+  
+  const { userData, leagueData, setLeagueData } = useContext(DataContext)
+  const [leagues, setLeagues] = useState([])
+  // const [selectedLeagues, setSelectedLeagues] = useState([])
+  
+  useEffect(() => {
+    const fetchLeagues = async () => {
+      const userId = userData.user_id
+      const response = await axios.get(
+        `https://api.sleeper.app/v1/user/${userId}/leagues/nfl/2023`
+      );
+      const leagues = response.data
+      setLeagueData(leagues);
+      setLeagues(leagues);
+      console.log('sleeperLeagues', leagues)
+    };
+
+    fetchLeagues();
+  }, [userId]);
+
+  const handleCheckboxChange = (event)=> {
+    const leagueId = leagueData.league_id // leagueId === value of the checkbox(league_id)
+    if (event.target.checked) {
+      setLeagueData([...leagueData, leagueId]) // if checkbox is checked (true) => leagueData is updated to ALL the selected leagues
+    } else {
+      setLeagueData(leagueData.filter(id => id !== leagueId));
+    }
+  }
+ 
+  const handleImportLeagues = ()=> {
+    onImportLeagues(leagueData);
+    navigate('/'); // Navigate back to homepage
+  }
+  
+  return (
+    <>
+      <div>
+      <h2>Select Leagues to Import</h2>
+      <Form>
+        {leagues.map((league) => (
+          <Form.Check
+            key={league.league_id}
+            type="checkbox"
+            id={league.league_id}
+            label={league.name}
+            value={league.league_id}
+            checked={leagueData.includes(league.league_id)}
+            onChange={handleCheckboxChange}
+          />
+        ))}
+        <Button variant="primary" onClick={handleImportLeagues}>
+          Import Leagues
+        </Button>
+      </Form>
+    </div>
+    </>
+  )
+}
 

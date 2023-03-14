@@ -35,9 +35,9 @@ const HomePage = () => {
     <div>
       <div>
           <h2>Welcome to Fantasy🏈Flex </h2>
-          <h5>Step 1. Import your Fantasy Football leagues</h5>
-          <h5>Step 2. Track ALL your teams in one place for free!</h5>
-          <h5>Step 3. Flex on your competition and win some hardware!</h5>
+          <h6>Import your Fantasy Football leagues</h6>
+          <h6>Track ALL your teams in one place</h6>
+          {/* <text>Flex on your competition and win some hardware!</text> */}
       </div>
       <div>
         {token ? (
